@@ -13,13 +13,13 @@ function renderLicenseBadge(projectData) {
   } else if (projectData.license === "ISC") {
     badge = "![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)";
   } else {
-    badge = "No badge present";
+    badge = "";
   }
   return badge;
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+// // TODO: Create a function that returns the license link
+// // If there is no license, return an empty string
 function renderLicenseLink(projectData) {
   if (projectData.license === "MIT") {
     license = "(https://opensource.org/licenses/MIT)";
@@ -35,15 +35,49 @@ function renderLicenseLink(projectData) {
   return license;
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
-
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
+const generateMarkdown = (projectData) => {
+  renderLicenseBadge(projectData);
+  renderLicenseLink(projectData);
 
-`;
+  return `
+  
+  ${badge}
+  
+  # ${projectData.title}
+  
+  ## Description 
+  
+  ${projectData.description}
+  
+  
+  ## Table of Contents
+    
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [License](#license)
+  * [Contributing](#contributing)
+  * [Tests](#tests)
+  * [Questions](#questions)
+  
+  ## Installation
+  ${projectData.install}
+  ## Usage 
+  ${projectData.usage}
+  ## License
+  This project is licensed under the ${projectData.license} license.  To learn more please visit their website at ${license}.
+  ## Contributing
+  ${projectData.contribute}
+  ## Tests
+  ${projectData.tests}
+  ## Questions
+  If you have further questions please check out my github page at https://github.com/${projectData.question}
+  If there are further questions you can email me at ${projectData.email}.
+  
+  ## Demonstration
+  To view a demonstration of how this application works please click here.
+  
+  `;
 }
 
 module.exports = generateMarkdown;

@@ -150,7 +150,7 @@ function init(fileName, projectData) {
         if (err) {
             console.log(err);
         } else {
-            console.log("Readme Created!")
+            console.log("Readme Created!!")
         }
     })
 }
